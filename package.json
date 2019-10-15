@@ -1,8 +1,8 @@
 {
   "name": "fake-ses",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Runs a fake SES server on a HTTP port.",
-  "main": "index.js",
+  "main": "build/src/index.js",
   "scripts": {
     "test": "npm run build && npm run tslint -s && npm run cover -s && npm run check -s",
     "unit-test": "node build/test/index.js",
@@ -39,7 +39,6 @@
     "url": "https://github.com/Raynos/fake-ses/issues",
     "email": "raynos2@gmail.com"
   },
-  "main": "build/src/index.js",
   "contributors": [
     {
       "name": "Raynos"
