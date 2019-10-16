@@ -1288,7 +1288,6 @@
       "strictFunctionTypes": true,
       "pretty": true,
       "project": ".",
-      "watch": true,
       "configFilePath": "/home/raynos/projects/fake-ses/tsconfig.json"
     },
     "referencedMap": {
@@ -6594,6 +6593,7 @@
       "/home/raynos/projects/fake-ses/node_modules/@types/node/ts3.2/globals.d.ts",
       "/home/raynos/projects/fake-ses/node_modules/@types/node/ts3.2/index.d.ts",
       "/home/raynos/projects/fake-ses/types/tape/index.d.ts",
+      "/home/raynos/projects/fake-ses/types/tape-cluster/index.d.ts",
       "/home/raynos/projects/fake-ses/node_modules/tslib/tslib.d.ts",
       "/home/raynos/projects/fake-ses/src/sync-wait-group.ts",
       "/home/raynos/projects/fake-ses/src/index.ts",
@@ -6832,9 +6832,8 @@
       "/home/raynos/projects/fake-ses/node_modules/aws-sdk/lib/shared-ini/ini-loader.d.ts",
       "/home/raynos/projects/fake-ses/node_modules/aws-sdk/lib/core.d.ts",
       "/home/raynos/projects/fake-ses/node_modules/aws-sdk/index.d.ts",
-      "/home/raynos/projects/fake-ses/test/index.ts",
-      "/home/raynos/projects/fake-ses/types/tape-cluster/index.d.ts",
-      "/home/raynos/projects/fake-ses/test/test-harness.ts"
+      "/home/raynos/projects/fake-ses/test/test-harness.ts",
+      "/home/raynos/projects/fake-ses/test/index.ts"
     ]
   },
   "version": "3.4.5"

@@ -49,7 +49,7 @@ async function test() {
   await myServer.close()
 }
 
-process.on('unhandledReject', (err) => { throw err })
+process.on('unhandledRejection', (err) => { throw err })
 test()
 ```
 
