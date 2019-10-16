@@ -1,6 +1,6 @@
 {
   "name": "fake-ses",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Runs a fake SES server on a HTTP port.",
   "main": "build/src/index.js",
   "scripts": {
