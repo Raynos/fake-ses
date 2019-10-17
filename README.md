@@ -1,4 +1,4 @@
-# fake-sqs
+# fake-ses
 
 Runs a fake SES server on a HTTP port.
 
@@ -6,7 +6,7 @@ Runs a fake SES server on a HTTP port.
 
 ```js
 const assert = require('assert')
-const SESServer = require('fake-ses')
+const SESServer = require('fake-ses').FakeSESServer
 const AWS = require('aws-sdk')
 
 async function test() {
