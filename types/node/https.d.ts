@@ -1,8 +1,8 @@
-declare module "https" {
-  import * as tls from "tls";
-  import * as events from "events";
-  import * as http from "http";
-  import { URL } from "url";
+declare module 'https' {
+  import * as tls from 'tls'
+  import * as events from 'events'
+  import * as http from 'http'
+  import { URL } from 'url'
 
   type ServerOptions = tls.SecureContextOptions & tls.TlsOptions & http.ServerOptions;
 
@@ -17,18 +17,19 @@ declare module "https" {
   }
 
   class Agent extends http.Agent {
-      constructor(options?: AgentOptions);
+    constructor(options?: AgentOptions);
       options: AgentOptions;
   }
 
   class Server extends tls.Server {
-      constructor(requestListener?: http.RequestListener);
-      constructor(options: ServerOptions, requestListener?: http.RequestListener);
+    constructor(requestListener?: http.RequestListener);
+    constructor(options: ServerOptions, requestListener?: http.RequestListener);
 
-      setTimeout(callback: () => void): this;
-      setTimeout(msecs?: number, callback?: () => void): this;
+    setTimeout(callback: () => void): this;
+    setTimeout(msecs?: number, callback?: () => void): this;
       /**
        * Limits maximum incoming headers count. If set to 0, no limit will be applied.
+       *
        * @default 2000
        * {@link https://nodejs.org/api/http.html#http_server_maxheaderscount}
        */
@@ -36,6 +37,7 @@ declare module "https" {
       timeout: number;
       /**
        * Limit the amount of time the parser will wait to receive the complete HTTP headers.
+       *
        * @default 40000
        * {@link https://nodejs.org/api/http.html#http_server_headerstimeout}
        */
@@ -49,5 +51,5 @@ declare module "https" {
   function request(url: string | URL, options: RequestOptions, callback?: (res: http.IncomingMessage) => void): http.ClientRequest;
   function get(options: RequestOptions | string | URL, callback?: (res: http.IncomingMessage) => void): http.ClientRequest;
   function get(url: string | URL, options: RequestOptions, callback?: (res: http.IncomingMessage) => void): http.ClientRequest;
-  let globalAgent: Agent;
+  let globalAgent: Agent
 }
