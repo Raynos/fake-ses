@@ -1,6 +1,4 @@
 declare module 'tls' {
-  import * as crypto from 'crypto'
-  import * as dns from 'dns'
   import * as net from 'net'
   import * as stream from 'stream'
 
