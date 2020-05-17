@@ -1,5 +1,4 @@
 // TypeScript Version: 3.0
-/// <reference types="node" />
 
 export = tape;
 

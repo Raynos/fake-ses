@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "types": ["node"],
     "target": "es2018",
     "lib": ["es2018"],
     "outDir": "node_modules/.__out",
