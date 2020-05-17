@@ -1,7 +1,7 @@
-declare module "http" {
-  import * as stream from "stream";
-  import { URL } from "url";
-  import { Socket, Server as NetServer } from "net";
+declare module 'http' {
+  import * as stream from 'stream'
+  import { URL } from 'url'
+  import { Socket, Server as NetServer } from 'net'
 
   // incoming headers will never contain number
   interface IncomingHttpHeaders {
@@ -96,13 +96,14 @@ declare module "http" {
   type RequestListener = (req: IncomingMessage, res: ServerResponse) => void;
 
   class Server extends NetServer {
-      constructor(requestListener?: RequestListener);
-      constructor(options: ServerOptions, requestListener?: RequestListener);
+    constructor(requestListener?: RequestListener);
+    constructor(options: ServerOptions, requestListener?: RequestListener);
 
-      setTimeout(msecs?: number, callback?: () => void): this;
-      setTimeout(callback: () => void): this;
+    setTimeout(msecs?: number, callback?: () => void): this;
+    setTimeout(callback: () => void): this;
       /**
        * Limits maximum incoming headers count. If set to 0, no limit will be applied.
+       *
        * @default 2000
        * {@link https://nodejs.org/api/http.html#http_server_maxheaderscount}
        */
@@ -110,6 +111,7 @@ declare module "http" {
       timeout: number;
       /**
        * Limit the amount of time the parser will wait to receive the complete HTTP headers.
+       *
        * @default 40000
        * {@link https://nodejs.org/api/http.html#http_server_headerstimeout}
        */
@@ -137,7 +139,7 @@ declare module "http" {
       getHeaderNames(): string[];
       hasHeader(name: string): boolean;
       removeHeader(name: string): void;
-      addTrailers(headers: OutgoingHttpHeaders | Array<[string, string]>): void;
+      addTrailers(headers: OutgoingHttpHeaders | [string, string][]): void;
       flushHeaders(): void;
   }
 
@@ -174,7 +176,7 @@ declare module "http" {
   }
 
   class IncomingMessage extends stream.Readable {
-      constructor(socket: Socket);
+    constructor(socket: Socket);
 
       httpVersion: string;
       httpVersionMajor: number;
@@ -236,6 +238,7 @@ declare module "http" {
       readonly sockets: {
           readonly [key: string]: Socket[];
       };
+
       readonly requests: {
           readonly [key: string]: IncomingMessage[];
       };
@@ -251,12 +254,12 @@ declare module "http" {
       destroy(): void;
   }
 
-  const METHODS: string[];
+  const METHODS: string[]
 
   const STATUS_CODES: {
       [errorCode: number]: string | undefined;
       [errorCode: string]: string | undefined;
-  };
+  }
 
   function createServer(requestListener?: RequestListener): Server;
   function createServer(options: ServerOptions, requestListener?: RequestListener): Server;
@@ -268,11 +271,11 @@ declare module "http" {
   function request(url: string | URL, options: RequestOptions, callback?: (res: IncomingMessage) => void): ClientRequest;
   function get(options: RequestOptions | string | URL, callback?: (res: IncomingMessage) => void): ClientRequest;
   function get(url: string | URL, options: RequestOptions, callback?: (res: IncomingMessage) => void): ClientRequest;
-  let globalAgent: Agent;
+  let globalAgent: Agent
 
   /**
    * Read-only property specifying the maximum allowed size of HTTP headers in bytes.
    * Defaults to 8KB. Configurable using the [`--max-http-header-size`][] CLI option.
    */
-  const maxHeaderSize: number;
+  const maxHeaderSize: number
 }

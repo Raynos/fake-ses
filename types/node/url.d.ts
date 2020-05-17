@@ -1,5 +1,5 @@
-declare module "url" {
-  import { ParsedUrlQuery, ParsedUrlQueryInput } from 'querystring';
+declare module 'url' {
+  import { ParsedUrlQuery, ParsedUrlQueryInput } from 'querystring'
 
   interface UrlObjectCommon {
       auth?: string;
@@ -34,8 +34,7 @@ declare module "url" {
       query: string | null;
   }
 
-  function parse(urlStr: string): UrlWithStringQuery;
-  function parse(urlStr: string, parseQueryString: false | undefined, slashesDenoteHost?: boolean): UrlWithStringQuery;
+  function parse(urlStr: string, parseQueryString?: false | undefined, slashesDenoteHost?: boolean): UrlWithStringQuery;
   function parse(urlStr: string, parseQueryString: true, slashesDenoteHost?: boolean): UrlWithParsedQuery;
   function parse(urlStr: string, parseQueryString: boolean, slashesDenoteHost?: boolean): Url;
 
@@ -49,6 +48,7 @@ declare module "url" {
   /**
    * This function ensures the correct decodings of percent-encoded characters as
    * well as ensuring a cross-platform valid absolute path string.
+   *
    * @param url The file URL string or URL object to convert to a path.
    */
   function fileURLToPath(url: string | URL): string;
@@ -56,6 +56,7 @@ declare module "url" {
   /**
    * This function ensures that path is resolved absolutely, and that the URL
    * control characters are correctly encoded when converting into a File URL.
+   *
    * @param url The path to convert to a File URL.
    */
   function pathToFileURL(url: string): URL;
@@ -68,7 +69,7 @@ declare module "url" {
   }
 
   class URL {
-      constructor(input: string, base?: string | URL);
+    constructor(input: string, base?: string | URL);
       hash: string;
       host: string;
       hostname: string;
@@ -86,19 +87,19 @@ declare module "url" {
   }
 
   class URLSearchParams implements Iterable<[string, string]> {
-      constructor(init?: URLSearchParams | string | { [key: string]: string | string[] | undefined } | Iterable<[string, string]> | Array<[string, string]>);
-      append(name: string, value: string): void;
-      delete(name: string): void;
-      entries(): IterableIterator<[string, string]>;
-      forEach(callback: (value: string, name: string, searchParams: this) => void): void;
-      get(name: string): string | null;
-      getAll(name: string): string[];
-      has(name: string): boolean;
-      keys(): IterableIterator<string>;
-      set(name: string, value: string): void;
-      sort(): void;
-      toString(): string;
-      values(): IterableIterator<string>;
-      [Symbol.iterator](): IterableIterator<[string, string]>;
+    constructor(init?: URLSearchParams | string | { [key: string]: string | string[] | undefined } | Iterable<[string, string]> | [string, string][]);
+    append(name: string, value: string): void;
+    delete(name: string): void;
+    entries(): IterableIterator<[string, string]>;
+    forEach(callback: (value: string, name: string, searchParams: this) => void): void;
+    get(name: string): string | null;
+    getAll(name: string): string[];
+    has(name: string): boolean;
+    keys(): IterableIterator<string>;
+    set(name: string, value: string): void;
+    sort(): void;
+    toString(): string;
+    values(): IterableIterator<string>;
+    [Symbol.iterator](): IterableIterator<[string, string]>;
   }
 }

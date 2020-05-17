@@ -6,7 +6,7 @@ interface Console {
    * If it is not, an `AssertionError` is thrown.
    * If provided, the error `message` is formatted using `util.format()` and used as the error message.
    */
-  assert(value: any, message?: string, ...optionalParams: any[]): void;
+  assert(value: unknown, message?: string, ...optionalParams: unknown[]): void;
   /**
    * When `stdout` is a TTY, calling `console.clear()` will attempt to clear the TTY.
    * When `stdout` is not a TTY, this method does nothing.
@@ -23,29 +23,29 @@ interface Console {
   /**
    * The `console.debug()` function is an alias for {@link console.log()}.
    */
-  debug(message?: any, ...optionalParams: any[]): void;
+  debug(message?: unknown, ...optionalParams: unknown[]): void;
   /**
    * Uses {@link util.inspect()} on `obj` and prints the resulting string to `stdout`.
-   * This function bypasses any custom `inspect()` function defined on `obj`.
+   * This function bypasses unknown custom `inspect()` function defined on `obj`.
    */
-  dir(obj: any, options?: NodeJS.InspectOptions): void;
+  dir(obj: unknown, options?: NodeJS.InspectOptions): void;
   /**
-   * This method calls {@link console.log()} passing it the arguments received. Please note that this method does not produce any XML formatting
+   * This method calls {@link console.log()} passing it the arguments received. Please note that this method does not produce unknown XML formatting
    */
-  dirxml(...data: any[]): void;
+  dirxml(...data: unknown[]): void;
   /**
    * Prints to `stderr` with newline.
    */
-  error(message?: any, ...optionalParams: any[]): void;
+  error(message?: unknown, ...optionalParams: unknown[]): void;
   /**
    * Increases indentation of subsequent lines by two spaces.
    * If one or more `label`s are provided, those are printed first without the additional indentation.
    */
-  group(...label: any[]): void;
+  group(...label: unknown[]): void;
   /**
    * The `console.groupCollapsed()` function is an alias for {@link console.group()}.
    */
-  groupCollapsed(...label: any[]): void;
+  groupCollapsed(...label: unknown[]): void;
   /**
    * Decreases indentation of subsequent lines by two spaces.
    */
@@ -53,16 +53,16 @@ interface Console {
   /**
    * The {@link console.info()} function is an alias for {@link console.log()}.
    */
-  info(message?: any, ...optionalParams: any[]): void;
+  info(message?: unknown, ...optionalParams: unknown[]): void;
   /**
    * Prints to `stdout` with newline.
    */
-  log(message?: any, ...optionalParams: any[]): void;
+  log(message?: unknown, ...optionalParams: unknown[]): void;
   /**
-   * This method does not display anything unless used in the inspector.
+   * This method does not display unknownthing unless used in the inspector.
    *  Prints to `stdout` the array `array` formatted as a table.
    */
-  table(tabularData: any, properties?: string[]): void;
+  table(tabularData: unknown, properties?: string[]): void;
   /**
    * Starts a timer that can be used to compute the duration of an operation. Timers are identified by a unique `label`.
    */
@@ -74,48 +74,48 @@ interface Console {
   /**
    * For a timer that was previously started by calling {@link console.time()}, prints the elapsed time and other `data` arguments to `stdout`.
    */
-  timeLog(label?: string, ...data: any[]): void;
+  timeLog(label?: string, ...data: unknown[]): void;
   /**
    * Prints to `stderr` the string 'Trace :', followed by the {@link util.format()} formatted message and stack trace to the current position in the code.
    */
-  trace(message?: any, ...optionalParams: any[]): void;
+  trace(message?: unknown, ...optionalParams: unknown[]): void;
   /**
    * The {@link console.warn()} function is an alias for {@link console.error()}.
    */
-  warn(message?: any, ...optionalParams: any[]): void;
+  warn(message?: unknown, ...optionalParams: unknown[]): void;
 
   // --- Inspector mode only ---
   /**
-   * This method does not display anything unless used in the inspector.
+   * This method does not display unknownthing unless used in the inspector.
    *  The console.markTimeline() method is the deprecated form of console.timeStamp().
    *
    * @deprecated Use console.timeStamp() instead.
    */
   markTimeline(label?: string): void;
   /**
-   * This method does not display anything unless used in the inspector.
+   * This method does not display unknownthing unless used in the inspector.
    *  Starts a JavaScript CPU profile with an optional label.
    */
   profile(label?: string): void;
   /**
-   * This method does not display anything unless used in the inspector.
+   * This method does not display unknownthing unless used in the inspector.
    *  Stops the current JavaScript CPU profiling session if one has been started and prints the report to the Profiles panel of the inspector.
    */
   profileEnd(label?: string): void;
   /**
-   * This method does not display anything unless used in the inspector.
+   * This method does not display unknownthing unless used in the inspector.
    *  Adds an event with the label `label` to the Timeline panel of the inspector.
    */
   timeStamp(label?: string): void;
   /**
-   * This method does not display anything unless used in the inspector.
+   * This method does not display unknownthing unless used in the inspector.
    *  The console.timeline() method is the deprecated form of console.time().
    *
    * @deprecated Use console.time() instead.
    */
   timeline(label?: string): void;
   /**
-   * This method does not display anything unless used in the inspector.
+   * This method does not display unknownthing unless used in the inspector.
    *  The console.timelineEnd() method is the deprecated form of console.timeEnd().
    *
    * @deprecated Use console.timeEnd() instead.
@@ -130,14 +130,14 @@ interface Error {
 // Declare "static" methods in Error
 interface ErrorConstructor {
   /** Create .stack property on a target object */
-  captureStackTrace(targetObject: Object, constructorOpt?: Function): void;
+  captureStackTrace(targetObject: object, constructorOpt?: (...args: unknown[]) => void): void;
 
   /**
    * Optional override for formatting stack traces
    *
    * @see https://github.com/v8/v8/wiki/Stack%20Trace%20API#customizing-stack-traces
    */
-  prepareStackTrace?: (err: Error, stackTraces: NodeJS.CallSite[]) => any;
+  prepareStackTrace?: (err: Error, stackTraces: NodeJS.CallSite[]) => unknown;
 
   stackTraceLimit: number;
 }
@@ -154,27 +154,27 @@ interface String {
   trimRight(): string;
 }
 
-/*-----------------------------------------------*
+/* -----------------------------------------------*
 *                                               *
 *                   GLOBAL                      *
 *                                               *
-------------------------------------------------*/
-declare var process: NodeJS.Process;
-declare var global: NodeJS.Global;
-declare var console: Console;
+------------------------------------------------ */
+declare let process: NodeJS.Process
+declare let global: NodeJS.Global
+declare let console: Console
 
-declare var __filename: string;
-declare var __dirname: string;
+declare let __filename: string
+declare let __dirname: string
 
-declare function setTimeout(callback: (...args: any[]) => void, ms: number, ...args: any[]): NodeJS.Timeout;
+declare function setTimeout(callback: (...args: unknown[]) => void, ms: number, ...args: unknown[]): NodeJS.Timeout;
 declare namespace setTimeout {
   function __promisify__(ms: number): Promise<void>;
   function __promisify__<T>(ms: number, value: T): Promise<T>;
 }
 declare function clearTimeout(timeoutId: NodeJS.Timeout): void;
-declare function setInterval(callback: (...args: any[]) => void, ms: number, ...args: any[]): NodeJS.Timeout;
+declare function setInterval(callback: (...args: unknown[]) => void, ms: number, ...args: unknown[]): NodeJS.Timeout;
 declare function clearInterval(intervalId: NodeJS.Timeout): void;
-declare function setImmediate(callback: (...args: any[]) => void, ...args: any[]): NodeJS.Immediate;
+declare function setImmediate(callback: (...args: unknown[]) => void, ...args: unknown[]): NodeJS.Immediate;
 declare namespace setImmediate {
   function __promisify__(): Promise<void>;
   function __promisify__<T>(value: T): Promise<T>;
@@ -182,19 +182,16 @@ declare namespace setImmediate {
 declare function clearImmediate(immediateId: NodeJS.Immediate): void;
 
 /**
-* @experimental
-*/
+ * @experimental
+ */
 declare function queueMicrotask(callback: () => void): void;
 
-// TODO: change to `type NodeRequireFunction = (id: string) => any;` in next mayor version.
-interface NodeRequireFunction {
-  /* tslint:disable-next-line:callable-types */
-  (id: string): any;
-}
+// TODO: change to `type NodeRequireFunction = (id: string) => unknown;` in next mayor version.
+type NodeRequireFunction = (id: string) => unknown;
 
 interface NodeRequire extends NodeRequireFunction {
   resolve: RequireResolve;
-  cache: any;
+  cache: unknown;
   /**
    * @deprecated
    */
@@ -203,21 +200,21 @@ interface NodeRequire extends NodeRequireFunction {
 }
 
 interface RequireResolve {
-  (id: string, options?: { paths?: string[]; }): string;
+  (id: string, options?: { paths?: string[] }): string;
   paths(request: string): string[] | null;
 }
 
 interface NodeExtensions {
-  '.js': (m: NodeModule, filename: string) => any;
-  '.json': (m: NodeModule, filename: string) => any;
-  '.node': (m: NodeModule, filename: string) => any;
-  [ext: string]: (m: NodeModule, filename: string) => any;
+  '.js': (m: NodeModule, filename: string) => unknown;
+  '.json': (m: NodeModule, filename: string) => unknown;
+  '.node': (m: NodeModule, filename: string) => unknown;
+  [ext: string]: (m: NodeModule, filename: string) => unknown;
 }
 
-declare var require: NodeRequire;
+declare let require: NodeRequire
 
 interface NodeModule {
-  exports: any;
+  exports: unknown;
   require: NodeRequireFunction;
   id: string;
   filename: string;
@@ -227,20 +224,20 @@ interface NodeModule {
   paths: string[];
 }
 
-declare var module: NodeModule;
+declare let module: NodeModule
 
 // Same as module.exports
-declare var exports: any;
+declare let exports: unknown
 
 // Buffer class
-type BufferEncoding = "ascii" | "utf8" | "utf-8" | "utf16le" | "ucs2" | "ucs-2" | "base64" | "latin1" | "binary" | "hex";
+type BufferEncoding = 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' | 'base64' | 'latin1' | 'binary' | 'hex';
 interface Buffer extends Uint8Array {
   constructor: typeof Buffer;
   write(string: string, encoding?: BufferEncoding): number;
   write(string: string, offset: number, encoding?: BufferEncoding): number;
   write(string: string, offset: number, length: number, encoding?: BufferEncoding): number;
   toString(encoding?: string, start?: number, end?: number): string;
-  toJSON(): { type: 'Buffer', data: number[] };
+  toJSON(): { type: 'Buffer'; data: number[] };
   equals(otherBuffer: Uint8Array): boolean;
   compare(otherBuffer: Uint8Array, targetStart?: number, targetEnd?: number, sourceStart?: number, sourceEnd?: number): number;
   copy(targetBuffer: Uint8Array, targetStart?: number, sourceStart?: number, sourceEnd?: number): number;
@@ -286,7 +283,7 @@ interface Buffer extends Uint8Array {
   writeFloatBE(value: number, offset: number): number;
   writeDoubleLE(value: number, offset: number): number;
   writeDoubleBE(value: number, offset: number): number;
-  fill(value: any, offset?: number, end?: number): this;
+  fill(value: unknown, offset?: number, end?: number): this;
   indexOf(value: string | number | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): number;
   lastIndexOf(value: string | number | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): number;
   entries(): IterableIterator<[number, number]>;
@@ -296,10 +293,10 @@ interface Buffer extends Uint8Array {
 }
 
 /**
-* Raw data is stored in instances of the Buffer class.
-* A Buffer is similar to an array of integers but corresponds to a raw memory allocation outside the V8 heap.  A Buffer cannot be resized.
-* Valid string encodings: 'ascii'|'utf8'|'utf16le'|'ucs2'(alias of 'utf16le')|'base64'|'binary'(deprecated)|'hex'
-*/
+ * Raw data is stored in instances of the Buffer class.
+ * A Buffer is similar to an array of integers but corresponds to a raw memory allocation outside the V8 heap.  A Buffer cannot be resized.
+ * Valid string encodings: 'ascii'|'utf8'|'utf16le'|'ucs2'(alias of 'utf16le')|'base64'|'binary'(deprecated)|'hex'
+ */
 declare const Buffer: {
   /**
    * Allocates a new buffer containing the given {str}.
@@ -338,7 +335,7 @@ declare const Buffer: {
    * @param array The octets to store.
    * @deprecated since v10.0.0 - Use `Buffer.from(array)` instead.
    */
-  new(array: any[]): Buffer;
+  new(array: unknown[]): Buffer;
   /**
    * Copies the passed {buffer} data onto a new {Buffer} instance.
    *
@@ -353,11 +350,12 @@ declare const Buffer: {
    * The optional {byteOffset} and {length} arguments specify a memory range
    * within the {arrayBuffer} that will be shared by the Buffer.
    *
-   * @param arrayBuffer The .buffer property of any TypedArray or a new ArrayBuffer()
+   * @param arrayBuffer The .buffer property of unknown TypedArray or a new ArrayBuffer()
    */
   from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?: number): Buffer;
   /**
    * Creates a new Buffer using the passed {data}
+   *
    * @param data data to create a new Buffer
    */
   from(data: number[]): Buffer;
@@ -370,6 +368,7 @@ declare const Buffer: {
   from(str: string, encoding?: BufferEncoding): Buffer;
   /**
    * Creates a new Buffer using the passed {data}
+   *
    * @param values to create a new Buffer
    */
   of(...items: number[]): Buffer;
@@ -378,14 +377,14 @@ declare const Buffer: {
    *
    * @param obj object to test.
    */
-  isBuffer(obj: any): obj is Buffer;
+  isBuffer(obj: unknown): obj is Buffer;
   /**
    * Returns true if {encoding} is a valid encoding argument.
    * Valid string encodings in Node 0.12: 'ascii'|'utf8'|'utf16le'|'ucs2'(alias of 'utf16le')|'base64'|'binary'(deprecated)|'hex'
    *
    * @param encoding string to test.
    */
-  isEncoding(encoding: string): encoding is BufferEncoding
+  isEncoding(encoding: string): encoding is BufferEncoding;
   /**
    * Gives the actual byte length of a string. encoding defaults to 'utf8'.
    * This is not the same as String.prototype.length since that returns the number of characters in a string.
@@ -437,13 +436,14 @@ declare const Buffer: {
    * This is the number of bytes used to determine the size of pre-allocated, internal Buffer instances used for pooling. This value may be modified.
    */
   poolSize: number;
-};
+}
 
-/*----------------------------------------------*
-*                                               *
-*               GLOBAL INTERFACES               *
-*                                               *
-*-----------------------------------------------*/
+/* ----------------------------------------------*
+ *                                               *
+ *               GLOBAL INTERFACES               *
+ *                                               *
+ * ----------------------------------------------*
+ */
 declare namespace NodeJS {
   interface InspectOptions {
       /**
@@ -452,6 +452,7 @@ declare namespace NodeJS {
        * to be inspected. If set to `'set'` only getters having a corresponding
        * setter are going to be inspected. This might cause side effects depending on
        * the getter function.
+       *
        * @default `false`
        */
       getters?: 'get' | 'set' | boolean;
@@ -473,6 +474,7 @@ declare namespace NodeJS {
        * `breakLength`. Short array elements are also grouped together. Note that no
        * text will be reduced below 16 characters, no matter the `breakLength` size.
        * For more information, see the example below.
+       *
        * @default `true`
        */
       compact?: boolean | number;
@@ -493,11 +495,13 @@ declare namespace NodeJS {
       new(options: ConsoleConstructorOptions): Console;
   }
 
+  type NodeJSCallback = (error?: Error | null, data?: unknown) => void;
+
   interface CallSite {
       /**
        * Value of "this"
        */
-      getThis(): any;
+      getThis(): unknown;
 
       /**
        * Type of "this" as a string.
@@ -510,7 +514,7 @@ declare namespace NodeJS {
       /**
        * Current function
        */
-      getFunction(): Function | undefined;
+      getFunction(): (() => void) | undefined;
 
       /**
        * Name of the current function, typically its name property.
@@ -576,22 +580,22 @@ declare namespace NodeJS {
   }
 
   class EventEmitter {
-      addListener(event: string | symbol, listener: (...args: any[]) => void): this;
-      on(event: string | symbol, listener: (...args: any[]) => void): this;
-      once(event: string | symbol, listener: (...args: any[]) => void): this;
-      removeListener(event: string | symbol, listener: (...args: any[]) => void): this;
-      off(event: string | symbol, listener: (...args: any[]) => void): this;
-      removeAllListeners(event?: string | symbol): this;
-      setMaxListeners(n: number): this;
-      getMaxListeners(): number;
-      listeners(event: string | symbol): Function[];
-      rawListeners(event: string | symbol): Function[];
-      emit(event: string | symbol, ...args: any[]): boolean;
-      listenerCount(type: string | symbol): number;
-      // Added in Node 6...
-      prependListener(event: string | symbol, listener: (...args: any[]) => void): this;
-      prependOnceListener(event: string | symbol, listener: (...args: any[]) => void): this;
-      eventNames(): Array<string | symbol>;
+    addListener(event: string | symbol, listener: (...args: unknown[]) => void): this;
+    on(event: string | symbol, listener: (...args: unknown[]) => void): this;
+    once(event: string | symbol, listener: (...args: unknown[]) => void): this;
+    removeListener(event: string | symbol, listener: (...args: unknown[]) => void): this;
+    off(event: string | symbol, listener: (...args: unknown[]) => void): this;
+    removeAllListeners(event?: string | symbol): this;
+    setMaxListeners(n: number): this;
+    getMaxListeners(): number;
+    listeners(event: string | symbol): (() => void)[];
+    rawListeners(event: string | symbol): (() => void)[];
+    emit(event: string | symbol, ...args: unknown[]): boolean;
+    listenerCount(type: string | symbol): number;
+    // Added in Node 6...
+    prependListener(event: string | symbol, listener: (...args: unknown[]) => void): this;
+    prependOnceListener(event: string | symbol, listener: (...args: unknown[]) => void): this;
+    eventNames(): (string | symbol)[];
   }
 
   interface ReadableStream extends EventEmitter {
@@ -601,7 +605,7 @@ declare namespace NodeJS {
       pause(): this;
       resume(): this;
       isPaused(): boolean;
-      pipe<T extends WritableStream>(destination: T, options?: { end?: boolean; }): T;
+      pipe<T extends WritableStream>(destination: T, options?: { end?: boolean }): T;
       unpipe(destination?: WritableStream): this;
       unshift(chunk: string | Buffer | Uint8Array): void;
       wrap(oldStream: ReadableStream): this;
@@ -619,19 +623,17 @@ declare namespace NodeJS {
 
   interface ReadWriteStream extends ReadableStream, WritableStream { }
 
-  interface Events extends EventEmitter { }
-
-  interface Domain extends Events {
-      run<T>(fn: (...args: any[]) => T, ...args: any[]): T;
+  interface Domain extends EventEmitter {
+      run<T>(fn: (...args: unknown[]) => T, ...args: unknown[]): T;
       add(emitter: EventEmitter | Timer): void;
       remove(emitter: EventEmitter | Timer): void;
-      bind<T extends Function>(cb: T): T;
-      intercept<T extends Function>(cb: T): T;
+      bind<T extends NodeJSCallback>(cb: T): T;
+      intercept<T extends NodeJSCallback>(cb: T): T;
 
-      addListener(event: string, listener: (...args: any[]) => void): this;
-      on(event: string, listener: (...args: any[]) => void): this;
-      once(event: string, listener: (...args: any[]) => void): this;
-      removeListener(event: string, listener: (...args: any[]) => void): this;
+      addListener(event: string, listener: (...args: unknown[]) => void): this;
+      on(event: string, listener: (...args: unknown[]) => void): this;
+      once(event: string, listener: (...args: unknown[]) => void): this;
+      removeListener(event: string, listener: (...args: unknown[]) => void): this;
       removeAllListeners(event?: string): this;
   }
 
@@ -677,25 +679,25 @@ declare namespace NodeJS {
       | 'cygwin';
 
   type Signals =
-      "SIGABRT" | "SIGALRM" | "SIGBUS" | "SIGCHLD" | "SIGCONT" | "SIGFPE" | "SIGHUP" | "SIGILL" | "SIGINT" | "SIGIO" |
-      "SIGIOT" | "SIGKILL" | "SIGPIPE" | "SIGPOLL" | "SIGPROF" | "SIGPWR" | "SIGQUIT" | "SIGSEGV" | "SIGSTKFLT" |
-      "SIGSTOP" | "SIGSYS" | "SIGTERM" | "SIGTRAP" | "SIGTSTP" | "SIGTTIN" | "SIGTTOU" | "SIGUNUSED" | "SIGURG" |
-      "SIGUSR1" | "SIGUSR2" | "SIGVTALRM" | "SIGWINCH" | "SIGXCPU" | "SIGXFSZ" | "SIGBREAK" | "SIGLOST" | "SIGINFO";
+      'SIGABRT' | 'SIGALRM' | 'SIGBUS' | 'SIGCHLD' | 'SIGCONT' | 'SIGFPE' | 'SIGHUP' | 'SIGILL' | 'SIGINT' | 'SIGIO' |
+      'SIGIOT' | 'SIGKILL' | 'SIGPIPE' | 'SIGPOLL' | 'SIGPROF' | 'SIGPWR' | 'SIGQUIT' | 'SIGSEGV' | 'SIGSTKFLT' |
+      'SIGSTOP' | 'SIGSYS' | 'SIGTERM' | 'SIGTRAP' | 'SIGTSTP' | 'SIGTTIN' | 'SIGTTOU' | 'SIGUNUSED' | 'SIGURG' |
+      'SIGUSR1' | 'SIGUSR2' | 'SIGVTALRM' | 'SIGWINCH' | 'SIGXCPU' | 'SIGXFSZ' | 'SIGBREAK' | 'SIGLOST' | 'SIGINFO';
 
   type MultipleResolveType = 'resolve' | 'reject';
 
   type BeforeExitListener = (code: number) => void;
   type DisconnectListener = () => void;
   type ExitListener = (code: number) => void;
-  type RejectionHandledListener = (promise: Promise<any>) => void;
+  type RejectionHandledListener = (promise: Promise<unknown>) => void;
   type UncaughtExceptionListener = (error: Error) => void;
-  type UnhandledRejectionListener = (reason: {} | null | undefined, promise: Promise<any>) => void;
+  type UnhandledRejectionListener = (reason: {} | null | undefined, promise: Promise<unknown>) => void;
   type WarningListener = (warning: Error) => void;
-  type MessageListener = (message: any, sendHandle: any) => void;
+  type MessageListener = (message: unknown, sendHandle: unknown) => void;
   type SignalsListener = (signal: Signals) => void;
-  type NewListenerListener = (type: string | symbol, listener: (...args: any[]) => void) => void;
-  type RemoveListenerListener = (type: string | symbol, listener: (...args: any[]) => void) => void;
-  type MultipleResolveListener = (type: MultipleResolveType, promise: Promise<any>, value: any) => void;
+  type NewListenerListener = (type: string | symbol, listener: (...args: unknown[]) => void) => void;
+  type RemoveListenerListener = (type: string | symbol, listener: (...args: unknown[]) => void) => void;
+  type MultipleResolveListener = (type: MultipleResolveType, promise: Promise<unknown>, value: unknown) => void;
 
   interface Socket extends ReadWriteStream {
       isTTY?: true;
@@ -710,7 +712,7 @@ declare namespace NodeJS {
       readonly writableLength: number;
       columns?: number;
       rows?: number;
-      _write(chunk: any, encoding: string, callback: (err?: null | Error) => void): void;
+      _write(chunk: unknown, encoding: string, callback: (err?: null | Error) => void): void;
       _destroy(err: Error | null, callback: (err?: null | Error) => void): void;
       _final(callback: (err?: null | Error) => void): void;
       setDefaultEncoding(encoding: string): this;
@@ -725,18 +727,17 @@ declare namespace NodeJS {
       setRawMode?(mode: boolean): void;
       _read(size: number): void;
       _destroy(err: Error | null, callback: (err?: null | Error) => void): void;
-      push(chunk: any, encoding?: string): boolean;
+      push(chunk: unknown, encoding?: string): boolean;
       destroy(error?: Error): void;
   }
 
-  interface HRTime {
-      (time?: [number, number]): [number, number];
-  }
+  type HRTime = (time?: [number, number]) => [number, number];
 
   interface ProcessReport {
       /**
        * Directory where the report is written.
        * working directory of the Node.js process.
+       *
        * @default '' indicating that reports are written to the current
        */
       directory: string;
@@ -744,6 +745,7 @@ declare namespace NodeJS {
       /**
        * Filename where the report is written.
        * The default value is the empty string.
+       *
        * @default '' the output filename will be comprised of a timestamp,
        * PID, and sequence number.
        */
@@ -758,6 +760,7 @@ declare namespace NodeJS {
       /**
        * If true, a diagnostic report is generated on fatal errors,
        * such as out of memory errors or failed C++ assertions.
+       *
        * @default false
        */
       reportOnFatalError: boolean;
@@ -765,18 +768,21 @@ declare namespace NodeJS {
       /**
        * If true, a diagnostic report is generated when the process
        * receives the signal specified by process.report.signal.
+       *
        * @defaul false
        */
       reportOnSignal: boolean;
 
       /**
        * If true, a diagnostic report is generated on uncaught exception.
+       *
        * @default false
        */
       reportOnUncaughtException: boolean;
 
       /**
        * The signal used to trigger the creation of a diagnostic report.
+       *
        * @default 'SIGUSR2'
        */
       signal: Signals;
@@ -817,7 +823,9 @@ declare namespace NodeJS {
       chdir(directory: string): void;
       cwd(): string;
       debugPort: number;
-      emitWarning(warning: string | Error, name?: string, ctor?: Function): void;
+      emitWarning(
+        warning: string | Error, name?: string, ctor?: (...args: unknown[]) => void
+      ): void;
       env: ProcessEnv;
       exit(code?: number): never;
       exitCode: number;
@@ -830,14 +838,14 @@ declare namespace NodeJS {
       getegid(): number;
       setegid(id: number | string): void;
       getgroups(): number[];
-      setgroups(groups: Array<string | number>): void;
+      setgroups(groups: (string | number)[]): void;
       setUncaughtExceptionCaptureCallback(cb: ((err: Error) => void) | null): void;
       hasUncaughtExceptionCaptureCallback(): boolean;
       version: string;
       versions: ProcessVersions;
       config: {
           target_defaults: {
-              cflags: any[];
+              cflags: unknown[];
               default_configuration: string;
               defines: string[];
               include_dirs: string[];
@@ -870,7 +878,7 @@ declare namespace NodeJS {
       mainModule?: NodeModule;
       memoryUsage(): MemoryUsage;
       cpuUsage(previousValue?: CpuUsage): CpuUsage;
-      nextTick(callback: Function, ...args: any[]): void;
+      nextTick(callback: () => void, ...args: unknown[]): void;
       release: ProcessRelease;
       features: {
           inspector: boolean;
@@ -891,7 +899,7 @@ declare namespace NodeJS {
       domain: Domain;
 
       // Worker
-      send?(message: any, sendHandle?: any, options?: { swallowErrors?: boolean}, callback?: (error: Error | null) => void): boolean;
+      send?(message: unknown, sendHandle?: unknown, options?: { swallowErrors?: boolean}, callback?: (error: Error | null) => void): boolean;
       disconnect(): void;
       connected: boolean;
 
@@ -921,96 +929,96 @@ declare namespace NodeJS {
        *  10. <All OS Signals>
        *  11. newListener/removeListener inherited from EventEmitter
        */
-      addListener(event: "beforeExit", listener: BeforeExitListener): this;
-      addListener(event: "disconnect", listener: DisconnectListener): this;
-      addListener(event: "exit", listener: ExitListener): this;
-      addListener(event: "rejectionHandled", listener: RejectionHandledListener): this;
-      addListener(event: "uncaughtException", listener: UncaughtExceptionListener): this;
-      addListener(event: "unhandledRejection", listener: UnhandledRejectionListener): this;
-      addListener(event: "warning", listener: WarningListener): this;
-      addListener(event: "message", listener: MessageListener): this;
+      addListener(event: 'beforeExit', listener: BeforeExitListener): this;
+      addListener(event: 'disconnect', listener: DisconnectListener): this;
+      addListener(event: 'exit', listener: ExitListener): this;
+      addListener(event: 'rejectionHandled', listener: RejectionHandledListener): this;
+      addListener(event: 'uncaughtException', listener: UncaughtExceptionListener): this;
+      addListener(event: 'unhandledRejection', listener: UnhandledRejectionListener): this;
+      addListener(event: 'warning', listener: WarningListener): this;
+      addListener(event: 'message', listener: MessageListener): this;
       addListener(event: Signals, listener: SignalsListener): this;
-      addListener(event: "newListener", listener: NewListenerListener): this;
-      addListener(event: "removeListener", listener: RemoveListenerListener): this;
-      addListener(event: "multipleResolves", listener: MultipleResolveListener): this;
+      addListener(event: 'newListener', listener: NewListenerListener): this;
+      addListener(event: 'removeListener', listener: RemoveListenerListener): this;
+      addListener(event: 'multipleResolves', listener: MultipleResolveListener): this;
 
-      emit(event: "beforeExit", code: number): boolean;
-      emit(event: "disconnect"): boolean;
-      emit(event: "exit", code: number): boolean;
-      emit(event: "rejectionHandled", promise: Promise<any>): boolean;
-      emit(event: "uncaughtException", error: Error): boolean;
-      emit(event: "unhandledRejection", reason: any, promise: Promise<any>): boolean;
-      emit(event: "warning", warning: Error): boolean;
-      emit(event: "message", message: any, sendHandle: any): this;
+      emit(event: 'beforeExit', code: number): boolean;
+      emit(event: 'disconnect'): boolean;
+      emit(event: 'exit', code: number): boolean;
+      emit(event: 'rejectionHandled', promise: Promise<unknown>): boolean;
+      emit(event: 'uncaughtException', error: Error): boolean;
+      emit(event: 'unhandledRejection', reason: unknown, promise: Promise<unknown>): boolean;
+      emit(event: 'warning', warning: Error): boolean;
+      emit(event: 'message', message: unknown, sendHandle: unknown): this;
       emit(event: Signals, signal: Signals): boolean;
-      emit(event: "newListener", eventName: string | symbol, listener: (...args: any[]) => void): this;
-      emit(event: "removeListener", eventName: string, listener: (...args: any[]) => void): this;
-      emit(event: "multipleResolves", listener: MultipleResolveListener): this;
+      emit(event: 'newListener', eventName: string | symbol, listener: (...args: unknown[]) => void): this;
+      emit(event: 'removeListener', eventName: string, listener: (...args: unknown[]) => void): this;
+      emit(event: 'multipleResolves', listener: MultipleResolveListener): this;
 
-      on(event: "beforeExit", listener: BeforeExitListener): this;
-      on(event: "disconnect", listener: DisconnectListener): this;
-      on(event: "exit", listener: ExitListener): this;
-      on(event: "rejectionHandled", listener: RejectionHandledListener): this;
-      on(event: "uncaughtException", listener: UncaughtExceptionListener): this;
-      on(event: "unhandledRejection", listener: UnhandledRejectionListener): this;
-      on(event: "warning", listener: WarningListener): this;
-      on(event: "message", listener: MessageListener): this;
+      on(event: 'beforeExit', listener: BeforeExitListener): this;
+      on(event: 'disconnect', listener: DisconnectListener): this;
+      on(event: 'exit', listener: ExitListener): this;
+      on(event: 'rejectionHandled', listener: RejectionHandledListener): this;
+      on(event: 'uncaughtException', listener: UncaughtExceptionListener): this;
+      on(event: 'unhandledRejection', listener: UnhandledRejectionListener): this;
+      on(event: 'warning', listener: WarningListener): this;
+      on(event: 'message', listener: MessageListener): this;
       on(event: Signals, listener: SignalsListener): this;
-      on(event: "newListener", listener: NewListenerListener): this;
-      on(event: "removeListener", listener: RemoveListenerListener): this;
-      on(event: "multipleResolves", listener: MultipleResolveListener): this;
+      on(event: 'newListener', listener: NewListenerListener): this;
+      on(event: 'removeListener', listener: RemoveListenerListener): this;
+      on(event: 'multipleResolves', listener: MultipleResolveListener): this;
 
-      once(event: "beforeExit", listener: BeforeExitListener): this;
-      once(event: "disconnect", listener: DisconnectListener): this;
-      once(event: "exit", listener: ExitListener): this;
-      once(event: "rejectionHandled", listener: RejectionHandledListener): this;
-      once(event: "uncaughtException", listener: UncaughtExceptionListener): this;
-      once(event: "unhandledRejection", listener: UnhandledRejectionListener): this;
-      once(event: "warning", listener: WarningListener): this;
-      once(event: "message", listener: MessageListener): this;
+      once(event: 'beforeExit', listener: BeforeExitListener): this;
+      once(event: 'disconnect', listener: DisconnectListener): this;
+      once(event: 'exit', listener: ExitListener): this;
+      once(event: 'rejectionHandled', listener: RejectionHandledListener): this;
+      once(event: 'uncaughtException', listener: UncaughtExceptionListener): this;
+      once(event: 'unhandledRejection', listener: UnhandledRejectionListener): this;
+      once(event: 'warning', listener: WarningListener): this;
+      once(event: 'message', listener: MessageListener): this;
       once(event: Signals, listener: SignalsListener): this;
-      once(event: "newListener", listener: NewListenerListener): this;
-      once(event: "removeListener", listener: RemoveListenerListener): this;
-      once(event: "multipleResolves", listener: MultipleResolveListener): this;
+      once(event: 'newListener', listener: NewListenerListener): this;
+      once(event: 'removeListener', listener: RemoveListenerListener): this;
+      once(event: 'multipleResolves', listener: MultipleResolveListener): this;
 
-      prependListener(event: "beforeExit", listener: BeforeExitListener): this;
-      prependListener(event: "disconnect", listener: DisconnectListener): this;
-      prependListener(event: "exit", listener: ExitListener): this;
-      prependListener(event: "rejectionHandled", listener: RejectionHandledListener): this;
-      prependListener(event: "uncaughtException", listener: UncaughtExceptionListener): this;
-      prependListener(event: "unhandledRejection", listener: UnhandledRejectionListener): this;
-      prependListener(event: "warning", listener: WarningListener): this;
-      prependListener(event: "message", listener: MessageListener): this;
+      prependListener(event: 'beforeExit', listener: BeforeExitListener): this;
+      prependListener(event: 'disconnect', listener: DisconnectListener): this;
+      prependListener(event: 'exit', listener: ExitListener): this;
+      prependListener(event: 'rejectionHandled', listener: RejectionHandledListener): this;
+      prependListener(event: 'uncaughtException', listener: UncaughtExceptionListener): this;
+      prependListener(event: 'unhandledRejection', listener: UnhandledRejectionListener): this;
+      prependListener(event: 'warning', listener: WarningListener): this;
+      prependListener(event: 'message', listener: MessageListener): this;
       prependListener(event: Signals, listener: SignalsListener): this;
-      prependListener(event: "newListener", listener: NewListenerListener): this;
-      prependListener(event: "removeListener", listener: RemoveListenerListener): this;
-      prependListener(event: "multipleResolves", listener: MultipleResolveListener): this;
+      prependListener(event: 'newListener', listener: NewListenerListener): this;
+      prependListener(event: 'removeListener', listener: RemoveListenerListener): this;
+      prependListener(event: 'multipleResolves', listener: MultipleResolveListener): this;
 
-      prependOnceListener(event: "beforeExit", listener: BeforeExitListener): this;
-      prependOnceListener(event: "disconnect", listener: DisconnectListener): this;
-      prependOnceListener(event: "exit", listener: ExitListener): this;
-      prependOnceListener(event: "rejectionHandled", listener: RejectionHandledListener): this;
-      prependOnceListener(event: "uncaughtException", listener: UncaughtExceptionListener): this;
-      prependOnceListener(event: "unhandledRejection", listener: UnhandledRejectionListener): this;
-      prependOnceListener(event: "warning", listener: WarningListener): this;
-      prependOnceListener(event: "message", listener: MessageListener): this;
+      prependOnceListener(event: 'beforeExit', listener: BeforeExitListener): this;
+      prependOnceListener(event: 'disconnect', listener: DisconnectListener): this;
+      prependOnceListener(event: 'exit', listener: ExitListener): this;
+      prependOnceListener(event: 'rejectionHandled', listener: RejectionHandledListener): this;
+      prependOnceListener(event: 'uncaughtException', listener: UncaughtExceptionListener): this;
+      prependOnceListener(event: 'unhandledRejection', listener: UnhandledRejectionListener): this;
+      prependOnceListener(event: 'warning', listener: WarningListener): this;
+      prependOnceListener(event: 'message', listener: MessageListener): this;
       prependOnceListener(event: Signals, listener: SignalsListener): this;
-      prependOnceListener(event: "newListener", listener: NewListenerListener): this;
-      prependOnceListener(event: "removeListener", listener: RemoveListenerListener): this;
-      prependOnceListener(event: "multipleResolves", listener: MultipleResolveListener): this;
+      prependOnceListener(event: 'newListener', listener: NewListenerListener): this;
+      prependOnceListener(event: 'removeListener', listener: RemoveListenerListener): this;
+      prependOnceListener(event: 'multipleResolves', listener: MultipleResolveListener): this;
 
-      listeners(event: "beforeExit"): BeforeExitListener[];
-      listeners(event: "disconnect"): DisconnectListener[];
-      listeners(event: "exit"): ExitListener[];
-      listeners(event: "rejectionHandled"): RejectionHandledListener[];
-      listeners(event: "uncaughtException"): UncaughtExceptionListener[];
-      listeners(event: "unhandledRejection"): UnhandledRejectionListener[];
-      listeners(event: "warning"): WarningListener[];
-      listeners(event: "message"): MessageListener[];
+      listeners(event: 'beforeExit'): BeforeExitListener[];
+      listeners(event: 'disconnect'): DisconnectListener[];
+      listeners(event: 'exit'): ExitListener[];
+      listeners(event: 'rejectionHandled'): RejectionHandledListener[];
+      listeners(event: 'uncaughtException'): UncaughtExceptionListener[];
+      listeners(event: 'unhandledRejection'): UnhandledRejectionListener[];
+      listeners(event: 'warning'): WarningListener[];
+      listeners(event: 'message'): MessageListener[];
       listeners(event: Signals): SignalsListener[];
-      listeners(event: "newListener"): NewListenerListener[];
-      listeners(event: "removeListener"): RemoveListenerListener[];
-      listeners(event: "multipleResolves"): MultipleResolveListener[];
+      listeners(event: 'newListener'): NewListenerListener[];
+      listeners(event: 'removeListener'): RemoveListenerListener[];
+      listeners(event: 'multipleResolves'): MultipleResolveListener[];
   }
 
   interface Global {
@@ -1037,20 +1045,20 @@ declare namespace NodeJS {
       NaN: typeof NaN;
       Number: typeof Number;
       Object: typeof Object;
-      Promise: Function;
+      Promise: typeof Promise;
       RangeError: typeof RangeError;
       ReferenceError: typeof ReferenceError;
       RegExp: typeof RegExp;
       Set: SetConstructor;
       String: typeof String;
-      Symbol: Function;
+      Symbol: typeof Symbol;
       SyntaxError: typeof SyntaxError;
       TypeError: typeof TypeError;
       URIError: typeof URIError;
       Uint16Array: typeof Uint16Array;
       Uint32Array: typeof Uint32Array;
       Uint8Array: typeof Uint8Array;
-      Uint8ClampedArray: Function;
+      Uint8ClampedArray: typeof Uint8ClampedArray;
       WeakMap: WeakMapConstructor;
       WeakSet: WeakSetConstructor;
       clearImmediate: (immediateId: Immediate) => void;
@@ -1062,6 +1070,7 @@ declare namespace NodeJS {
       encodeURI: typeof encodeURI;
       encodeURIComponent: typeof encodeURIComponent;
       escape: (str: string) => string;
+      /* eslint-disable-next-line no-eval */
       eval: typeof eval;
       global: Global;
       isFinite: typeof isFinite;
@@ -1070,14 +1079,14 @@ declare namespace NodeJS {
       parseInt: typeof parseInt;
       process: Process;
       root: Global;
-      setImmediate: (callback: (...args: any[]) => void, ...args: any[]) => Immediate;
-      setInterval: (callback: (...args: any[]) => void, ms: number, ...args: any[]) => Timeout;
-      setTimeout: (callback: (...args: any[]) => void, ms: number, ...args: any[]) => Timeout;
+      setImmediate: (callback: (...args: unknown[]) => void, ...args: unknown[]) => Immediate;
+      setInterval: (callback: (...args: unknown[]) => void, ms: number, ...args: unknown[]) => Timeout;
+      setTimeout: (callback: (...args: unknown[]) => void, ms: number, ...args: unknown[]) => Timeout;
       queueMicrotask: typeof queueMicrotask;
       undefined: typeof undefined;
       unescape: (str: string) => string;
       gc: () => void;
-      v8debug?: any;
+      v8debug?: unknown;
   }
 
   interface Timer {
@@ -1087,35 +1096,15 @@ declare namespace NodeJS {
   }
 
   class Immediate {
-      ref(): void;
-      unref(): void;
-      _onImmediate: Function; // to distinguish it from the Timeout class
+    ref(): void;
+    unref(): void;
+    _onImmediate: () => void; // to distinguish it from the Timeout class
   }
 
   class Timeout implements Timer {
-      ref(): void;
-      refresh(): void;
-      unref(): void;
-  }
-
-  class Module {
-      static runMain(): void;
-      static wrap(code: string): string;
-      static createRequireFromPath(path: string): (path: string) => any;
-      static builtinModules: string[];
-
-      static Module: typeof Module;
-
-      exports: any;
-      require: NodeRequireFunction;
-      id: string;
-      filename: string;
-      loaded: boolean;
-      parent: Module | null;
-      children: Module[];
-      paths: string[];
-
-      constructor(id: string, parent?: Module);
+    ref(): void;
+    refresh(): void;
+    unref(): void;
   }
 
   type TypedArray = Uint8Array | Uint8ClampedArray | Uint16Array | Uint32Array | Int8Array | Int16Array | Int32Array | Float32Array | Float64Array;
