@@ -44,15 +44,12 @@ class FakeSESServer {
       throw new Error('cannot bootstrap closed server')
     }
 
-    this.httpServer.on('request', (
-      /** @type {http.IncomingMessage} */ req,
-      /** @type {http.ServerResponse} */ res
-    ) => {
+    this.httpServer.on('request', (req, res) => {
       this.handleServerRequest(req, res)
     })
 
     const server = this.httpServer
-    await util.promisify((/** @type {Callback} */ cb) => {
+    await util.promisify((cb) => {
       server.listen(this.port, cb)
     })()
 
@@ -72,7 +69,7 @@ class FakeSESServer {
     }
 
     const server = this.httpServer
-    await util.promisify((/** @type {Callback} */ cb) => {
+    await util.promisify((cb) => {
       server.close(cb)
     })()
     this.httpServer = null
@@ -109,7 +106,7 @@ class FakeSESServer {
    */
   handleServerRequest (req, res) {
     let body = ''
-    req.on('data', (/** @type {Buffer | string} */ chunk) => {
+    req.on('data', (chunk) => {
       body += chunk.toString()
     })
     req.on('end', () => {
