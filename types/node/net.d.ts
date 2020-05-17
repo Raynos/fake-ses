@@ -86,6 +86,10 @@ declare module 'net' {
       addListener(event: 'connect' | 'drain' | 'end' | 'timeout', listener: () => void): this;
       addListener(event: 'data', listener: (data: Buffer) => void): this;
       addListener(event: 'error', listener: (err: Error) => void): this;
+      addListener(event: 'drain', listener: () => void): this;
+      addListener(event: 'finish', listener: () => void): this;
+      addListener(event: 'pipe', listener: (src: stream.Readable) => void): this;
+      addListener(event: 'unpipe', listener: (src: stream.Readable) => void): this;
       addListener(event: 'lookup', listener: (err: Error, address: string, family: string | number, host: string) => void): this;
 
       emit(event: string | symbol, ...args: unknown[]): boolean;
@@ -93,6 +97,11 @@ declare module 'net' {
       emit(event: 'connect' | 'drain' | 'end' | 'timeout'): boolean;
       emit(event: 'data', data: Buffer): boolean;
       emit(event: 'error', err: Error): boolean;
+      emit(event: 'drain'): boolean;
+      emit(event: 'error', err: Error): boolean;
+      emit(event: 'finish'): boolean;
+      emit(event: 'pipe', src: stream.Readable): boolean;
+      emit(event: 'unpipe', src: stream.Readable): boolean;
       emit(event: 'lookup', err: Error, address: string, family: string | number, host: string): boolean;
 
       on(event: string, listener: (...args: unknown[]) => void): this;
@@ -101,6 +110,11 @@ declare module 'net' {
       on(event: 'data', listener: (data: Buffer) => void): this;
       on(event: 'error', listener: (err: Error) => void): this;
       on(event: 'lookup', listener: (err: Error, address: string, family: string | number, host: string) => void): this;
+      on(event: 'drain', listener: () => void): this;
+      on(event: 'error', listener: (err: Error) => void): this;
+      on(event: 'finish', listener: () => void): this;
+      on(event: 'pipe', listener: (src: stream.Readable) => void): this;
+      on(event: 'unpipe', listener: (src: stream.Readable) => void): this;
 
       once(event: string, listener: (...args: unknown[]) => void): this;
       once(event: 'close', listener: (hadError: boolean) => void): this;
@@ -108,12 +122,22 @@ declare module 'net' {
       once(event: 'data', listener: (data: Buffer) => void): this;
       once(event: 'error', listener: (err: Error) => void): this;
       once(event: 'lookup', listener: (err: Error, address: string, family: string | number, host: string) => void): this;
+      once(event: 'drain', listener: () => void): this;
+      once(event: 'error', listener: (err: Error) => void): this;
+      once(event: 'finish', listener: () => void): this;
+      once(event: 'pipe', listener: (src: stream.Readable) => void): this;
+      once(event: 'unpipe', listener: (src: stream.Readable) => void): this;
 
       prependListener(event: string, listener: (...args: unknown[]) => void): this;
       prependListener(event: 'close', listener: (hadError: boolean) => void): this;
       prependListener(event: 'connect' | 'drain' | 'end' | 'timeout', listener: () => void): this;
       prependListener(event: 'data', listener: (data: Buffer) => void): this;
       prependListener(event: 'error', listener: (err: Error) => void): this;
+      prependListener(event: 'drain', listener: () => void): this;
+      prependListener(event: 'error', listener: (err: Error) => void): this;
+      prependListener(event: 'finish', listener: () => void): this;
+      prependListener(event: 'pipe', listener: (src: stream.Readable) => void): this;
+      prependListener(event: 'unpipe', listener: (src: stream.Readable) => void): this;
       prependListener(event: 'lookup', listener: (err: Error, address: string, family: string | number, host: string) => void): this;
 
       prependOnceListener(event: string, listener: (...args: unknown[]) => void): this;
@@ -121,6 +145,11 @@ declare module 'net' {
       prependOnceListener(event: 'connect' | 'drain' | 'end' | 'timeout', listener: () => void): this;
       prependOnceListener(event: 'data', listener: (data: Buffer) => void): this;
       prependOnceListener(event: 'error', listener: (err: Error) => void): this;
+      prependOnceListener(event: 'drain', listener: () => void): this;
+      prependOnceListener(event: 'error', listener: (err: Error) => void): this;
+      prependOnceListener(event: 'finish', listener: () => void): this;
+      prependOnceListener(event: 'pipe', listener: (src: stream.Readable) => void): this;
+      prependOnceListener(event: 'unpipe', listener: (src: stream.Readable) => void): this;
       prependOnceListener(event: 'lookup', listener: (err: Error, address: string, family: string | number, host: string) => void): this;
   }
 

@@ -109,7 +109,7 @@ class FakeSESServer {
    */
   handleServerRequest (req, res) {
     let body = ''
-    req.on('data', (/** @type {Buffer} */ chunk) => {
+    req.on('data', (/** @type {Buffer | string} */ chunk) => {
       body += chunk.toString()
     })
     req.on('end', () => {

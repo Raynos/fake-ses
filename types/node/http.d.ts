@@ -117,6 +117,36 @@ declare module 'http' {
        */
       headersTimeout: number;
       keepAliveTimeout: number;
+
+      addListener(event: 'close' | 'listening', listener: () => void): this;
+      addListener(event: 'connection', listener: (socket: Socket) => void): this;
+      addListener(event: 'error', listener: (err: Error) => void): this;
+      addListener(event: 'request', listener: (req: IncomingMessage, res: ServerResponse) => void): this;
+
+      emit(event: 'close' | 'listening'): boolean;
+      emit(event: 'connection', socket: Socket): boolean;
+      emit(event: 'error', err: Error): boolean;
+      emit(event: 'request', req: IncomingMessage, res: ServerResponse): this;
+
+      on(event: 'close' | 'listening', listener: () => void): this;
+      on(event: 'connection', listener: (socket: Socket) => void): this;
+      on(event: 'error', listener: (err: Error) => void): this;
+      on(event: 'request', listener: (req: IncomingMessage, res: ServerResponse) => void): this;
+
+      once(event: 'close' | 'listening', listener: () => void): this;
+      once(event: 'connection', listener: (socket: Socket) => void): this;
+      once(event: 'error', listener: (err: Error) => void): this;
+      once(event: 'request', listener: (req: IncomingMessage, res: ServerResponse) => void): this;
+
+      prependListener(event: 'close' | 'listening', listener: () => void): this;
+      prependListener(event: 'connection', listener: (socket: Socket) => void): this;
+      prependListener(event: 'error', listener: (err: Error) => void): this;
+      prependListener(event: 'request', listener: (req: IncomingMessage, res: ServerResponse) => void): this;
+
+      prependOnceListener(event: 'close' | 'listening', listener: () => void): this;
+      prependOnceListener(event: 'connection', listener: (socket: Socket) => void): this;
+      prependOnceListener(event: 'error', listener: (err: Error) => void): this;
+      prependOnceListener(event: 'request', listener: (req: IncomingMessage, res: ServerResponse) => void): this;
   }
 
   // https://github.com/nodejs/node/blob/master/lib/_http_outgoing.js
@@ -266,7 +296,7 @@ declare module 'http' {
 
   // although RequestOptions are passed as ClientRequestArgs to ClientRequest directly,
   // create interface RequestOptions would make the naming more clear to developers
-  interface RequestOptions extends ClientRequestArgs { }
+  type RequestOptions = ClientRequestArgs
   function request(options: RequestOptions | string | URL, callback?: (res: IncomingMessage) => void): ClientRequest;
   function request(url: string | URL, options: RequestOptions, callback?: (res: IncomingMessage) => void): ClientRequest;
   function get(options: RequestOptions | string | URL, callback?: (res: IncomingMessage) => void): ClientRequest;
