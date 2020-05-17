@@ -1,5 +1,5 @@
-declare module "crypto" {
-  import * as stream from "stream";
+declare module 'crypto' {
+  import * as stream from 'stream'
 
   interface Certificate {
       exportChallenge(spkac: BinaryLike): Buffer;
@@ -9,128 +9,130 @@ declare module "crypto" {
   const Certificate: {
       new(): Certificate;
       (): Certificate;
-  };
+  }
+
+  /* eslint-disable @typescript-eslint/camelcase */
 
   namespace constants { // https://nodejs.org/dist/latest-v10.x/docs/api/crypto.html#crypto_crypto_constants
-      const OPENSSL_VERSION_NUMBER: number;
+      const OPENSSL_VERSION_NUMBER: number
 
       /** Applies multiple bug workarounds within OpenSSL. See https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html for detail. */
-      const SSL_OP_ALL: number;
+      const SSL_OP_ALL: number
       /** Allows legacy insecure renegotiation between OpenSSL and unpatched clients or servers. See https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html. */
-      const SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION: number;
+      const SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION: number
       /** Attempts to use the server's preferences instead of the client's when selecting a cipher. See https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html. */
-      const SSL_OP_CIPHER_SERVER_PREFERENCE: number;
+      const SSL_OP_CIPHER_SERVER_PREFERENCE: number
       /** Instructs OpenSSL to use Cisco's "speshul" version of DTLS_BAD_VER. */
-      const SSL_OP_CISCO_ANYCONNECT: number;
+      const SSL_OP_CISCO_ANYCONNECT: number
       /** Instructs OpenSSL to turn on cookie exchange. */
-      const SSL_OP_COOKIE_EXCHANGE: number;
+      const SSL_OP_COOKIE_EXCHANGE: number
       /** Instructs OpenSSL to add server-hello extension from an early version of the cryptopro draft. */
-      const SSL_OP_CRYPTOPRO_TLSEXT_BUG: number;
+      const SSL_OP_CRYPTOPRO_TLSEXT_BUG: number
       /** Instructs OpenSSL to disable a SSL 3.0/TLS 1.0 vulnerability workaround added in OpenSSL 0.9.6d. */
-      const SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS: number;
+      const SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS: number
       /** Instructs OpenSSL to always use the tmp_rsa key when performing RSA operations. */
-      const SSL_OP_EPHEMERAL_RSA: number;
+      const SSL_OP_EPHEMERAL_RSA: number
       /** Allows initial connection to servers that do not support RI. */
-      const SSL_OP_LEGACY_SERVER_CONNECT: number;
-      const SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER: number;
-      const SSL_OP_MICROSOFT_SESS_ID_BUG: number;
+      const SSL_OP_LEGACY_SERVER_CONNECT: number
+      const SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER: number
+      const SSL_OP_MICROSOFT_SESS_ID_BUG: number
       /** Instructs OpenSSL to disable the workaround for a man-in-the-middle protocol-version vulnerability in the SSL 2.0 server implementation. */
-      const SSL_OP_MSIE_SSLV2_RSA_PADDING: number;
-      const SSL_OP_NETSCAPE_CA_DN_BUG: number;
-      const SSL_OP_NETSCAPE_CHALLENGE_BUG: number;
-      const SSL_OP_NETSCAPE_DEMO_CIPHER_CHANGE_BUG: number;
-      const SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG: number;
+      const SSL_OP_MSIE_SSLV2_RSA_PADDING: number
+      const SSL_OP_NETSCAPE_CA_DN_BUG: number
+      const SSL_OP_NETSCAPE_CHALLENGE_BUG: number
+      const SSL_OP_NETSCAPE_DEMO_CIPHER_CHANGE_BUG: number
+      const SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG: number
       /** Instructs OpenSSL to disable support for SSL/TLS compression. */
-      const SSL_OP_NO_COMPRESSION: number;
-      const SSL_OP_NO_QUERY_MTU: number;
+      const SSL_OP_NO_COMPRESSION: number
+      const SSL_OP_NO_QUERY_MTU: number
       /** Instructs OpenSSL to always start a new session when performing renegotiation. */
-      const SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION: number;
-      const SSL_OP_NO_SSLv2: number;
-      const SSL_OP_NO_SSLv3: number;
-      const SSL_OP_NO_TICKET: number;
-      const SSL_OP_NO_TLSv1: number;
-      const SSL_OP_NO_TLSv1_1: number;
-      const SSL_OP_NO_TLSv1_2: number;
-      const SSL_OP_PKCS1_CHECK_1: number;
-      const SSL_OP_PKCS1_CHECK_2: number;
+      const SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION: number
+      const SSL_OP_NO_SSLv2: number
+      const SSL_OP_NO_SSLv3: number
+      const SSL_OP_NO_TICKET: number
+      const SSL_OP_NO_TLSv1: number
+      const SSL_OP_NO_TLSv1_1: number
+      const SSL_OP_NO_TLSv1_2: number
+      const SSL_OP_PKCS1_CHECK_1: number
+      const SSL_OP_PKCS1_CHECK_2: number
       /** Instructs OpenSSL to always create a new key when using temporary/ephemeral DH parameters. */
-      const SSL_OP_SINGLE_DH_USE: number;
+      const SSL_OP_SINGLE_DH_USE: number
       /** Instructs OpenSSL to always create a new key when using temporary/ephemeral ECDH parameters. */
-      const SSL_OP_SINGLE_ECDH_USE: number;
-      const SSL_OP_SSLEAY_080_CLIENT_DH_BUG: number;
-      const SSL_OP_SSLREF2_REUSE_CERT_TYPE_BUG: number;
-      const SSL_OP_TLS_BLOCK_PADDING_BUG: number;
-      const SSL_OP_TLS_D5_BUG: number;
+      const SSL_OP_SINGLE_ECDH_USE: number
+      const SSL_OP_SSLEAY_080_CLIENT_DH_BUG: number
+      const SSL_OP_SSLREF2_REUSE_CERT_TYPE_BUG: number
+      const SSL_OP_TLS_BLOCK_PADDING_BUG: number
+      const SSL_OP_TLS_D5_BUG: number
       /** Instructs OpenSSL to disable version rollback attack detection. */
-      const SSL_OP_TLS_ROLLBACK_BUG: number;
+      const SSL_OP_TLS_ROLLBACK_BUG: number
 
-      const ENGINE_METHOD_RSA: number;
-      const ENGINE_METHOD_DSA: number;
-      const ENGINE_METHOD_DH: number;
-      const ENGINE_METHOD_RAND: number;
-      const ENGINE_METHOD_EC: number;
-      const ENGINE_METHOD_CIPHERS: number;
-      const ENGINE_METHOD_DIGESTS: number;
-      const ENGINE_METHOD_PKEY_METHS: number;
-      const ENGINE_METHOD_PKEY_ASN1_METHS: number;
-      const ENGINE_METHOD_ALL: number;
-      const ENGINE_METHOD_NONE: number;
+      const ENGINE_METHOD_RSA: number
+      const ENGINE_METHOD_DSA: number
+      const ENGINE_METHOD_DH: number
+      const ENGINE_METHOD_RAND: number
+      const ENGINE_METHOD_EC: number
+      const ENGINE_METHOD_CIPHERS: number
+      const ENGINE_METHOD_DIGESTS: number
+      const ENGINE_METHOD_PKEY_METHS: number
+      const ENGINE_METHOD_PKEY_ASN1_METHS: number
+      const ENGINE_METHOD_ALL: number
+      const ENGINE_METHOD_NONE: number
 
-      const DH_CHECK_P_NOT_SAFE_PRIME: number;
-      const DH_CHECK_P_NOT_PRIME: number;
-      const DH_UNABLE_TO_CHECK_GENERATOR: number;
-      const DH_NOT_SUITABLE_GENERATOR: number;
+      const DH_CHECK_P_NOT_SAFE_PRIME: number
+      const DH_CHECK_P_NOT_PRIME: number
+      const DH_UNABLE_TO_CHECK_GENERATOR: number
+      const DH_NOT_SUITABLE_GENERATOR: number
 
-      const ALPN_ENABLED: number;
+      const ALPN_ENABLED: number
 
-      const RSA_PKCS1_PADDING: number;
-      const RSA_SSLV23_PADDING: number;
-      const RSA_NO_PADDING: number;
-      const RSA_PKCS1_OAEP_PADDING: number;
-      const RSA_X931_PADDING: number;
-      const RSA_PKCS1_PSS_PADDING: number;
+      const RSA_PKCS1_PADDING: number
+      const RSA_SSLV23_PADDING: number
+      const RSA_NO_PADDING: number
+      const RSA_PKCS1_OAEP_PADDING: number
+      const RSA_X931_PADDING: number
+      const RSA_PKCS1_PSS_PADDING: number
       /** Sets the salt length for RSA_PKCS1_PSS_PADDING to the digest size when signing or verifying. */
-      const RSA_PSS_SALTLEN_DIGEST: number;
+      const RSA_PSS_SALTLEN_DIGEST: number
       /** Sets the salt length for RSA_PKCS1_PSS_PADDING to the maximum permissible value when signing data. */
-      const RSA_PSS_SALTLEN_MAX_SIGN: number;
+      const RSA_PSS_SALTLEN_MAX_SIGN: number
       /** Causes the salt length for RSA_PKCS1_PSS_PADDING to be determined automatically when verifying a signature. */
-      const RSA_PSS_SALTLEN_AUTO: number;
+      const RSA_PSS_SALTLEN_AUTO: number
 
-      const POINT_CONVERSION_COMPRESSED: number;
-      const POINT_CONVERSION_UNCOMPRESSED: number;
-      const POINT_CONVERSION_HYBRID: number;
+      const POINT_CONVERSION_COMPRESSED: number
+      const POINT_CONVERSION_UNCOMPRESSED: number
+      const POINT_CONVERSION_HYBRID: number
 
       /** Specifies the built-in default cipher list used by Node.js (colon-separated values). */
-      const defaultCoreCipherList: string;
+      const defaultCoreCipherList: string
       /** Specifies the active default cipher list used by the current Node.js process  (colon-separated values). */
-      const defaultCipherList: string;
+      const defaultCipherList: string
   }
 
   /** @deprecated since v10.0.0 */
-  const fips: boolean;
+  const fips: boolean
 
   function createHash(algorithm: string, options?: stream.TransformOptions): Hash;
   function createHmac(algorithm: string, key: BinaryLike, options?: stream.TransformOptions): Hmac;
 
-  type Utf8AsciiLatin1Encoding = "utf8" | "ascii" | "latin1";
-  type HexBase64Latin1Encoding = "latin1" | "hex" | "base64";
-  type Utf8AsciiBinaryEncoding = "utf8" | "ascii" | "binary";
-  type HexBase64BinaryEncoding = "binary" | "base64" | "hex";
-  type ECDHKeyFormat = "compressed" | "uncompressed" | "hybrid";
+  type Utf8AsciiLatin1Encoding = 'utf8' | 'ascii' | 'latin1';
+  type HexBase64Latin1Encoding = 'latin1' | 'hex' | 'base64';
+  type Utf8AsciiBinaryEncoding = 'utf8' | 'ascii' | 'binary';
+  type HexBase64BinaryEncoding = 'binary' | 'base64' | 'hex';
+  type ECDHKeyFormat = 'compressed' | 'uncompressed' | 'hybrid';
 
   class Hash extends stream.Duplex {
-      private constructor();
-      update(data: BinaryLike): Hash;
-      update(data: string, input_encoding: Utf8AsciiLatin1Encoding): Hash;
-      digest(): Buffer;
-      digest(encoding: HexBase64Latin1Encoding): string;
+    private constructor();
+    update(data: BinaryLike): Hash;
+    update(data: string, input_encoding: Utf8AsciiLatin1Encoding): Hash;
+    digest(): Buffer;
+    digest(encoding: HexBase64Latin1Encoding): string;
   }
   class Hmac extends stream.Duplex {
-      private constructor();
-      update(data: BinaryLike): Hmac;
-      update(data: string, input_encoding: Utf8AsciiLatin1Encoding): Hmac;
-      digest(): Buffer;
-      digest(encoding: HexBase64Latin1Encoding): string;
+    private constructor();
+    update(data: BinaryLike): Hmac;
+    update(data: string, input_encoding: Utf8AsciiLatin1Encoding): Hmac;
+    digest(): Buffer;
+    digest(encoding: HexBase64Latin1Encoding): string;
   }
 
   export type KeyObjectType = 'secret' | 'public' | 'private';
@@ -143,7 +145,7 @@ declare module "crypto" {
   }
 
   class KeyObject {
-      private constructor();
+    private constructor();
       asymmetricKeyType?: KeyType;
       /**
        * For asymmetric keys, this property represents the size of the embedded key in
@@ -194,16 +196,16 @@ declare module "crypto" {
   ): Cipher;
 
   class Cipher extends stream.Duplex {
-      private constructor();
-      update(data: BinaryLike): Buffer;
-      update(data: string, input_encoding: Utf8AsciiBinaryEncoding): Buffer;
-      update(data: Binary, input_encoding: undefined, output_encoding: HexBase64BinaryEncoding): string;
-      update(data: string, input_encoding: Utf8AsciiBinaryEncoding | undefined, output_encoding: HexBase64BinaryEncoding): string;
-      final(): Buffer;
-      final(output_encoding: string): string;
-      setAutoPadding(auto_padding?: boolean): this;
-      // getAuthTag(): Buffer;
-      // setAAD(buffer: Buffer): this; // docs only say buffer
+    private constructor();
+    update(data: BinaryLike): Buffer;
+    update(data: string, input_encoding: Utf8AsciiBinaryEncoding): Buffer;
+    update(data: Binary, input_encoding: undefined, output_encoding: HexBase64BinaryEncoding): string;
+    update(data: string, input_encoding: Utf8AsciiBinaryEncoding | undefined, output_encoding: HexBase64BinaryEncoding): string;
+    final(): Buffer;
+    final(output_encoding: string): string;
+    setAutoPadding(auto_padding?: boolean): this;
+    // getAuthTag(): Buffer;
+    // setAAD(buffer: Buffer): this; // docs only say buffer
   }
   interface CipherCCM extends Cipher {
       setAAD(buffer: Buffer, options: { plaintextLength: number }): this;
@@ -235,16 +237,16 @@ declare module "crypto" {
   function createDecipheriv(algorithm: string, key: BinaryLike, iv: BinaryLike | null, options?: stream.TransformOptions): Decipher;
 
   class Decipher extends stream.Duplex {
-      private constructor();
-      update(data: Binary): Buffer;
-      update(data: string, input_encoding: HexBase64BinaryEncoding): Buffer;
-      update(data: Binary, input_encoding: undefined, output_encoding: Utf8AsciiBinaryEncoding): string;
-      update(data: string, input_encoding: HexBase64BinaryEncoding | undefined, output_encoding: Utf8AsciiBinaryEncoding): string;
-      final(): Buffer;
-      final(output_encoding: string): string;
-      setAutoPadding(auto_padding?: boolean): this;
-      // setAuthTag(tag: Binary): this;
-      // setAAD(buffer: Binary): this;
+    private constructor();
+    update(data: Binary): Buffer;
+    update(data: string, input_encoding: HexBase64BinaryEncoding): Buffer;
+    update(data: Binary, input_encoding: undefined, output_encoding: Utf8AsciiBinaryEncoding): string;
+    update(data: string, input_encoding: HexBase64BinaryEncoding | undefined, output_encoding: Utf8AsciiBinaryEncoding): string;
+    final(): Buffer;
+    final(output_encoding: string): string;
+    setAutoPadding(auto_padding?: boolean): this;
+    // setAuthTag(tag: Binary): this;
+    // setAAD(buffer: Binary): this;
   }
   interface DecipherCCM extends Decipher {
       setAuthTag(buffer: Binary): this;
@@ -288,50 +290,49 @@ declare module "crypto" {
   type KeyLike = string | Buffer | KeyObject;
 
   class Signer extends stream.Writable {
-      private constructor();
+    private constructor();
 
-      update(data: BinaryLike): Signer;
-      update(data: string, input_encoding: Utf8AsciiLatin1Encoding): Signer;
-      sign(private_key: SignPrivateKeyInput | KeyLike): Buffer;
-      sign(private_key: SignPrivateKeyInput | KeyLike, output_format: HexBase64Latin1Encoding): string;
+    update(data: BinaryLike): Signer;
+    update(data: string, input_encoding: Utf8AsciiLatin1Encoding): Signer;
+    sign(private_key: SignPrivateKeyInput | KeyLike): Buffer;
+    sign(private_key: SignPrivateKeyInput | KeyLike, output_format: HexBase64Latin1Encoding): string;
   }
 
   function createVerify(algorith: string, options?: stream.WritableOptions): Verify;
   class Verify extends stream.Writable {
-      private constructor();
+    private constructor();
 
-      update(data: BinaryLike): Verify;
-      update(data: string, input_encoding: Utf8AsciiLatin1Encoding): Verify;
-      verify(object: Object | KeyLike, signature: Binary): boolean;
-      verify(object: Object | KeyLike, signature: string, signature_format?: HexBase64Latin1Encoding): boolean;
-      // https://nodejs.org/api/crypto.html#crypto_verifier_verify_object_signature_signature_format
-      // The signature field accepts a TypedArray type, but it is only available starting ES2017
+    update(data: BinaryLike): Verify;
+    update(data: string, input_encoding: Utf8AsciiLatin1Encoding): Verify;
+    verify(object: object | KeyLike, signature: Binary): boolean;
+    verify(object: object | KeyLike, signature: string, signature_format?: HexBase64Latin1Encoding): boolean;
+    // https://nodejs.org/api/crypto.html#crypto_verifier_verify_object_signature_signature_format
+    // The signature field accepts a TypedArray type, but it is only available starting ES2017
   }
   function createDiffieHellman(prime_length: number, generator?: number | Binary): DiffieHellman;
   function createDiffieHellman(prime: Binary): DiffieHellman;
-  function createDiffieHellman(prime: string, prime_encoding: HexBase64Latin1Encoding): DiffieHellman;
-  function createDiffieHellman(prime: string, prime_encoding: HexBase64Latin1Encoding, generator: number | Binary): DiffieHellman;
+  function createDiffieHellman(prime: string, prime_encoding: HexBase64Latin1Encoding, generator?: number | Binary): DiffieHellman;
   function createDiffieHellman(prime: string, prime_encoding: HexBase64Latin1Encoding, generator: string, generator_encoding: HexBase64Latin1Encoding): DiffieHellman;
   class DiffieHellman {
-      private constructor();
-      generateKeys(): Buffer;
-      generateKeys(encoding: HexBase64Latin1Encoding): string;
-      computeSecret(other_public_key: Binary): Buffer;
-      computeSecret(other_public_key: string, input_encoding: HexBase64Latin1Encoding): Buffer;
-      computeSecret(other_public_key: Binary, output_encoding: HexBase64Latin1Encoding): string;
-      computeSecret(other_public_key: string, input_encoding: HexBase64Latin1Encoding, output_encoding: HexBase64Latin1Encoding): string;
-      getPrime(): Buffer;
-      getPrime(encoding: HexBase64Latin1Encoding): string;
-      getGenerator(): Buffer;
-      getGenerator(encoding: HexBase64Latin1Encoding): string;
-      getPublicKey(): Buffer;
-      getPublicKey(encoding: HexBase64Latin1Encoding): string;
-      getPrivateKey(): Buffer;
-      getPrivateKey(encoding: HexBase64Latin1Encoding): string;
-      setPublicKey(public_key: Binary): void;
-      setPublicKey(public_key: string, encoding: string): void;
-      setPrivateKey(private_key: Binary): void;
-      setPrivateKey(private_key: string, encoding: string): void;
+    private constructor();
+    generateKeys(): Buffer;
+    generateKeys(encoding: HexBase64Latin1Encoding): string;
+    computeSecret(other_public_key: Binary): Buffer;
+    computeSecret(other_public_key: string, input_encoding: HexBase64Latin1Encoding): Buffer;
+    computeSecret(other_public_key: Binary, output_encoding: HexBase64Latin1Encoding): string;
+    computeSecret(other_public_key: string, input_encoding: HexBase64Latin1Encoding, output_encoding: HexBase64Latin1Encoding): string;
+    getPrime(): Buffer;
+    getPrime(encoding: HexBase64Latin1Encoding): string;
+    getGenerator(): Buffer;
+    getGenerator(encoding: HexBase64Latin1Encoding): string;
+    getPublicKey(): Buffer;
+    getPublicKey(encoding: HexBase64Latin1Encoding): string;
+    getPrivateKey(): Buffer;
+    getPrivateKey(encoding: HexBase64Latin1Encoding): string;
+    setPublicKey(public_key: Binary): void;
+    setPublicKey(public_key: string, encoding: string): void;
+    setPrivateKey(private_key: Binary): void;
+    setPrivateKey(private_key: string, encoding: string): void;
       verifyError: number;
   }
   function getDiffieHellman(group_name: string): DiffieHellman;
@@ -341,7 +342,7 @@ declare module "crypto" {
       iterations: number,
       keylen: number,
       digest: string,
-      callback: (err: Error | null, derivedKey: Buffer) => any,
+      callback: (err: Error | null, derivedKey: Buffer) => void,
   ): void;
   function pbkdf2Sync(password: BinaryLike, salt: BinaryLike, iterations: number, keylen: number, digest: string): Buffer;
 
@@ -392,31 +393,32 @@ declare module "crypto" {
   function getCurves(): string[];
   function getHashes(): string[];
   class ECDH {
-      private constructor();
-      static convertKey(
+    private constructor();
+    static convertKey(
           key: BinaryLike,
           curve: string,
           inputEncoding?: HexBase64Latin1Encoding,
-          outputEncoding?: "latin1" | "hex" | "base64",
-          format?: "uncompressed" | "compressed" | "hybrid",
+          outputEncoding?: 'latin1' | 'hex' | 'base64',
+          format?: 'uncompressed' | 'compressed' | 'hybrid',
       ): Buffer | string;
-      generateKeys(): Buffer;
-      generateKeys(encoding: HexBase64Latin1Encoding, format?: ECDHKeyFormat): string;
-      computeSecret(other_public_key: Binary): Buffer;
-      computeSecret(other_public_key: string, input_encoding: HexBase64Latin1Encoding): Buffer;
-      computeSecret(other_public_key: Binary, output_encoding: HexBase64Latin1Encoding): string;
-      computeSecret(other_public_key: string, input_encoding: HexBase64Latin1Encoding, output_encoding: HexBase64Latin1Encoding): string;
-      getPrivateKey(): Buffer;
-      getPrivateKey(encoding: HexBase64Latin1Encoding): string;
-      getPublicKey(): Buffer;
-      getPublicKey(encoding: HexBase64Latin1Encoding, format?: ECDHKeyFormat): string;
-      setPrivateKey(private_key: Binary): void;
-      setPrivateKey(private_key: string, encoding: HexBase64Latin1Encoding): void;
+
+    generateKeys(): Buffer;
+    generateKeys(encoding: HexBase64Latin1Encoding, format?: ECDHKeyFormat): string;
+    computeSecret(other_public_key: Binary): Buffer;
+    computeSecret(other_public_key: string, input_encoding: HexBase64Latin1Encoding): Buffer;
+    computeSecret(other_public_key: Binary, output_encoding: HexBase64Latin1Encoding): string;
+    computeSecret(other_public_key: string, input_encoding: HexBase64Latin1Encoding, output_encoding: HexBase64Latin1Encoding): string;
+    getPrivateKey(): Buffer;
+    getPrivateKey(encoding: HexBase64Latin1Encoding): string;
+    getPublicKey(): Buffer;
+    getPublicKey(encoding: HexBase64Latin1Encoding, format?: ECDHKeyFormat): string;
+    setPrivateKey(private_key: Binary): void;
+    setPrivateKey(private_key: string, encoding: HexBase64Latin1Encoding): void;
   }
   function createECDH(curve_name: string): ECDH;
   function timingSafeEqual(a: Binary, b: Binary): boolean;
   /** @deprecated since v10.0.0 */
-  const DEFAULT_ENCODING: string;
+  const DEFAULT_ENCODING: string
 
   export type KeyType = 'rsa' | 'dsa' | 'ec';
   export type KeyFormat = 'pem' | 'der';
@@ -558,23 +560,23 @@ declare module "crypto" {
   function generateKeyPair(type: 'ec', options: ECKeyPairKeyObjectOptions, callback: (err: Error | null, publicKey: KeyObject, privateKey: KeyObject) => void): void;
 
   namespace generateKeyPair {
-      function __promisify__(type: "rsa", options: RSAKeyPairOptions<'pem', 'pem'>): Promise<{ publicKey: string, privateKey: string }>;
-      function __promisify__(type: "rsa", options: RSAKeyPairOptions<'pem', 'der'>): Promise<{ publicKey: string, privateKey: Buffer }>;
-      function __promisify__(type: "rsa", options: RSAKeyPairOptions<'der', 'pem'>): Promise<{ publicKey: Buffer, privateKey: string }>;
-      function __promisify__(type: "rsa", options: RSAKeyPairOptions<'der', 'der'>): Promise<{ publicKey: Buffer, privateKey: Buffer }>;
-      function __promisify__(type: "rsa", options: RSAKeyPairKeyObjectOptions): Promise<KeyPairKeyObjectResult>;
+      function __promisify__(type: 'rsa', options: RSAKeyPairOptions<'pem', 'pem'>): Promise<{ publicKey: string; privateKey: string }>;
+      function __promisify__(type: 'rsa', options: RSAKeyPairOptions<'pem', 'der'>): Promise<{ publicKey: string; privateKey: Buffer }>;
+      function __promisify__(type: 'rsa', options: RSAKeyPairOptions<'der', 'pem'>): Promise<{ publicKey: Buffer; privateKey: string }>;
+      function __promisify__(type: 'rsa', options: RSAKeyPairOptions<'der', 'der'>): Promise<{ publicKey: Buffer; privateKey: Buffer }>;
+      function __promisify__(type: 'rsa', options: RSAKeyPairKeyObjectOptions): Promise<KeyPairKeyObjectResult>;
 
-      function __promisify__(type: "dsa", options: DSAKeyPairOptions<'pem', 'pem'>): Promise<{ publicKey: string, privateKey: string }>;
-      function __promisify__(type: "dsa", options: DSAKeyPairOptions<'pem', 'der'>): Promise<{ publicKey: string, privateKey: Buffer }>;
-      function __promisify__(type: "dsa", options: DSAKeyPairOptions<'der', 'pem'>): Promise<{ publicKey: Buffer, privateKey: string }>;
-      function __promisify__(type: "dsa", options: DSAKeyPairOptions<'der', 'der'>): Promise<{ publicKey: Buffer, privateKey: Buffer }>;
-      function __promisify__(type: "dsa", options: DSAKeyPairKeyObjectOptions): Promise<KeyPairKeyObjectResult>;
+      function __promisify__(type: 'dsa', options: DSAKeyPairOptions<'pem', 'pem'>): Promise<{ publicKey: string; privateKey: string }>;
+      function __promisify__(type: 'dsa', options: DSAKeyPairOptions<'pem', 'der'>): Promise<{ publicKey: string; privateKey: Buffer }>;
+      function __promisify__(type: 'dsa', options: DSAKeyPairOptions<'der', 'pem'>): Promise<{ publicKey: Buffer; privateKey: string }>;
+      function __promisify__(type: 'dsa', options: DSAKeyPairOptions<'der', 'der'>): Promise<{ publicKey: Buffer; privateKey: Buffer }>;
+      function __promisify__(type: 'dsa', options: DSAKeyPairKeyObjectOptions): Promise<KeyPairKeyObjectResult>;
 
-      function __promisify__(type: "ec", options: ECKeyPairOptions<'pem', 'pem'>): Promise<{ publicKey: string, privateKey: string }>;
-      function __promisify__(type: "ec", options: ECKeyPairOptions<'pem', 'der'>): Promise<{ publicKey: string, privateKey: Buffer }>;
-      function __promisify__(type: "ec", options: ECKeyPairOptions<'der', 'pem'>): Promise<{ publicKey: Buffer, privateKey: string }>;
-      function __promisify__(type: "ec", options: ECKeyPairOptions<'der', 'der'>): Promise<{ publicKey: Buffer, privateKey: Buffer }>;
-      function __promisify__(type: "ec", options: ECKeyPairKeyObjectOptions): Promise<KeyPairKeyObjectResult>;
+      function __promisify__(type: 'ec', options: ECKeyPairOptions<'pem', 'pem'>): Promise<{ publicKey: string; privateKey: string }>;
+      function __promisify__(type: 'ec', options: ECKeyPairOptions<'pem', 'der'>): Promise<{ publicKey: string; privateKey: Buffer }>;
+      function __promisify__(type: 'ec', options: ECKeyPairOptions<'der', 'pem'>): Promise<{ publicKey: Buffer; privateKey: string }>;
+      function __promisify__(type: 'ec', options: ECKeyPairOptions<'der', 'der'>): Promise<{ publicKey: Buffer; privateKey: Buffer }>;
+      function __promisify__(type: 'ec', options: ECKeyPairKeyObjectOptions): Promise<KeyPairKeyObjectResult>;
   }
 
   /**
