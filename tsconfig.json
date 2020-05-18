@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "types": ["node"],
     "target": "es2018",
     "lib": ["es2018"],
-    "noEmit": true,
+    "outDir": "node_modules/.__out",
     "module": "commonjs",
     "allowJs": true,
     "checkJs": true,
+    "incremental": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
@@ -24,5 +24,6 @@
     "index.js",
     "sync-wait-group.js",
     "test/**/*.js"
-  ]
+  ],
+  "exclude": ["**/node_modules", "**/.*/"]
 }

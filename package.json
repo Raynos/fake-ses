@@ -11,13 +11,12 @@
   },
   "dependencies": {},
   "binDependencies": {
-    "tsdocstandard": "15.2.4",
+    "tsdocstandard": "15.4.2",
     "type-coverage": "2.4.3",
-    "typescript": "3.8.3"
+    "typescript": "3.9.2"
   },
   "devDependencies": {
     "@pre-bundled/tape": "3.6.1",
-    "@types/node": "12.0.2",
     "aws-sdk": "2.549.0",
     "npm-bin-deps": "1.8.1",
     "tape-cluster": "3.2.1"
