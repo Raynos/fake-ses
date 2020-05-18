@@ -21,6 +21,7 @@
     "npm-bin-deps": "1.8.1",
     "tape-cluster": "3.2.1"
   },
+  "files": ["*.js", "*.json"],
   "author": "Raynos <raynos2@gmail.com>",
   "repository": "git://github.com/Raynos/fake-ses.git",
   "homepage": "https://github.com/Raynos/fake-ses",
