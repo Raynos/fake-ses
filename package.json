@@ -2,7 +2,7 @@
   "name": "fake-ses",
   "version": "1.3.1",
   "description": "Runs a fake SES server on a HTTP port.",
-  "main": "ndex.js",
+  "main": "index.js",
   "scripts": {
     "check": "npr tsc -p .",
     "lint": "npr tsdocstandard -v",
